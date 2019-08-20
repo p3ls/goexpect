@@ -545,6 +545,7 @@ type GExpect struct {
 	pty *term.PTY
 	// cmd contains the cmd information for the spawned process.
 	cmd *exec.Cmd
+	Cmd *exec.Cmd
 	ssh *ssh.Session
 	// snd is the channel used by the Send command to send data into the spawned command.
 	snd chan string
@@ -933,6 +934,7 @@ func SpawnWithArgs(command []string, timeout time.Duration, opts ...Option) (*GE
 		rcv:         make(chan struct{}),
 		snd:         make(chan string),
 		cmd:         cmd,
+		Cmd:		 cmd,
 		timeout:     timeout,
 		chkDuration: checkDuration,
 		pty:         pty,
